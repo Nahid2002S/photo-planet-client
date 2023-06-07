@@ -29,6 +29,25 @@ const ManageUsers = () => {
         })
     }
 
+    const handleDelete = id =>{
+        fetch(`http://localhost:5000/users/${id}`,{
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            refetch()
+            if(data.deletedCount){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: ' User Successfully Deleted!',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
+    }
+
     const handleMakeInstructor = user =>{
         fetch(`http://localhost:5000/users/instructor/${user._id}`, {
             method: 'PATCH'
@@ -72,7 +91,7 @@ const ManageUsers = () => {
                 <button onClick={()=> handleMakeAdmin(user)} className='bg-green-600 text-white p-2 rounded-md font-semibold mr-2' disabled={user.role === 'admin'}>Make Admin</button>
                 <button onClick={() => handleMakeInstructor(user)} className='bg-orange-600 text-white p-2 rounded-md font-semibold' disabled={user.role === 'admin'}>Make Instructor</button>
             </td>
-            <td><button className='bg-red-600 p-2 text-white rounded-md'><FaTrashAlt></FaTrashAlt></button></td>
+            <td><button onClick={()=> handleDelete(user._id)} className='bg-red-600 p-2 text-white rounded-md'><FaTrashAlt></FaTrashAlt></button></td>
           </tr>)
       }
     </tbody>
