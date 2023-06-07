@@ -1,34 +1,55 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+import { AuthContext } from "../../authProvider/AuthProvider";
 
 import loginImage from '../../assets/loginImage.png'
-import { AuthContext } from '../../authProvider/AuthProvider';
 
 const Register = () => {
 
-    const {registerUser, updateUser} = useContext(AuthContext);
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { registerUser, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleRegister = event =>{
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const photo = form.photo.value;
+    const onSubmit = data => {
+        console.log(data);
+        registerUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUser(data.name, data.photo)
+                    .then(() => {
+                        const saveUser = {name: data.name, email : data.email}
 
-        registerUser(email, password)
-        .then(result =>{
-            updateUser(result.user, name, photo);
-            if(!result.user){
-                navigate('/login')
-            }
-            navigate('/')
-        })
-        .catch(err =>{
-            console.log(err)
-        })
-    }
+                        fetch('http://localhost:5000/users',{
+                            method: 'POST',
+                            headers: {
+                                'content-type' : 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if(data.insertedId){
+                               
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User created successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/');
+                            }
+                        })
+
+                    })
+                    .catch(error => console.log(error))
+            })
+    };
 
     return (
         <div className='px-2 text-black mb-4'>
@@ -39,20 +60,31 @@ const Register = () => {
             <img src={loginImage} alt="" />
         </div>
         <div className='lg:w-[50%]'>
-        <form onSubmit={handleRegister} className='flex flex-col gap-4'>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
         <label htmlFor="" className='text-xl font-semibold'>Name: <br />
-            <input type="text" name="name" id="name" className='px-4 py-2 rounded-md w-full' placeholder='Your Name' required/>
+            <input type="text" {...register("name", { required: true })} name="name" id="name" className='px-4 py-2 rounded-md w-full' placeholder='Your Name' required/>
+            {errors.name && <span className="text-red-600">Name is required</span>}
             </label>
             <label htmlFor="" className='text-xl font-semibold'>Email: <br />
-            <input type="email" name="email" id="email" className='px-4 py-2 rounded-md w-full' placeholder='Your Email' required/>
+            <input type="email"  {...register("email", { required: true })} name="email" id="email" className='px-4 py-2 rounded-md w-full' placeholder='Your Email' required/>
+            {errors.email && <span className="text-red-600">Email is required</span>}
             </label>
             <label htmlFor="" className='text-xl font-semibold'>Password: <br />
-            <input type="password" name="password" id="password" className='px-4 py-2 rounded-md w-full' placeholder='Password' required />
+                <input type="password"  {...register("password", {
+                                    required: true,
+                                    minLength: 6,
+                                    maxLength: 20,
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                })} placeholder="password" className='px-4 py-2 rounded-md w-full' />
+            {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
+                                {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
+                                {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
+                                {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
             </label>
             <label htmlFor="" className='text-xl font-semibold'>Photo URL: <br />
-            <input type="url" name="photo" id="photo" className='px-4 py-2 rounded-md w-full' placeholder='Photo URL' required/>
+            <input type="url" {...register("photo", { required: true })} name="photo" id="photo" className='px-4 py-2 rounded-md w-full' placeholder='Photo URL' required/>
+            {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
             </label>
-            <p className='text-red-200 font-semibold'></p>
             <button className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r from-green-600 to-green-900 shadow:md">Register </button>
             <p>Already have an account? <Link to='/login' className='text-blue-200 underline font-semibold'>Login</Link></p>
         </form>

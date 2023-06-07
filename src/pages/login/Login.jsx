@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImage from '../../assets/loginImage.png'
 import { AuthContext } from '../../authProvider/AuthProvider';
 
 const Login = () => {
-    const {loginUser} = useContext(AuthContext);
+    const {loginUser, googleAuth} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     
     const handleLogin = event =>{
         event.preventDefault();
@@ -14,12 +17,35 @@ const Login = () => {
 
         loginUser(email, password)
         .then(result =>{
-            console.log(result)
+            navigate(from, {replace : true})
         })
         .catch(err =>{
             console.log(err)
         })
     }
+
+    const handleGoogleLogin =() =>{
+        googleAuth()
+        .then(result =>{
+            const loggedUser = result.user;
+            const saveUser = {name: loggedUser.displayName, email : loggedUser.email}
+
+                        fetch('http://localhost:5000/users',{
+                            method: 'POST',
+                            headers: {
+                                'content-type' : 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                        .then(res => res.json())
+                        .then(() => {
+                        navigate(from, {replace : true});
+                        })
+                     })
+                        .catch(err =>{
+                             console.log(err)
+                        })
+                      }
 
     return (
         <div className='px-2 text-black mb-4'>
@@ -40,7 +66,7 @@ const Login = () => {
             <p className='font-semibold text-red-200'></p>
             <button className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r from-indigo-800 to-black shadow:md">Login</button>
             <hr />
-            <Link className="btn btn-outline btn-primary">Login With Google</Link>
+            <Link onClick={handleGoogleLogin} className="btn btn-outline btn-primary">Login With Google</Link>
             <p>New User? Create Account <Link to='/register' className='text-blue-200 underline font-semibold'>Register</Link></p>
         </form>
         </div>
