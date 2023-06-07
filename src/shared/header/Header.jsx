@@ -20,7 +20,9 @@ const Header = () => {
       <li><NavLink to='/' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Home</NavLink></li>
       <li><NavLink to='' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Instructor</NavLink></li>
       <li><NavLink to='' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Classes</NavLink></li>
-      <li><NavLink to='' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Dashboard</NavLink></li>
+      {
+        !user ? '' : <li><NavLink to='/dashboard' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Dashboard</NavLink></li>
+      }
       {
         !user ? <li><Link to='register'>Register</Link></li> : ""
       }
@@ -33,7 +35,9 @@ const Header = () => {
     <li><NavLink to='/' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Home</NavLink></li>
       <li><NavLink to='/instructor' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Instructor</NavLink></li>
       <li><NavLink to='/classes' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Classes</NavLink></li>
-      <li><NavLink to='/dashboard' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Dashboard</NavLink></li>
+      {
+        !user ? '' : <li><NavLink to='/dashboard' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Dashboard</NavLink></li>
+      }
       {
         !user ? <li><Link to='register'>Register</Link></li> : ""
       }

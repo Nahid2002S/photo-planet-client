@@ -28,6 +28,7 @@ const Login = () => {
         googleAuth()
         .then(result =>{
             const loggedUser = result.user;
+            console.log(loggedUser.photoURL)
             const saveUser = {name: loggedUser.displayName, email : loggedUser.email}
 
                         fetch('http://localhost:5000/users',{
