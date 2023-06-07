@@ -1,9 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaUsers, FaSwatchbook, FaHome } from 'react-icons/fa';
+import useAdmin from "../hooks/useAdmin";
 
 const DashboardLayout = () => {
 
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="drawer lg:drawer-open">
@@ -17,12 +18,12 @@ const DashboardLayout = () => {
     <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
       {/* Sidebar content here */}
-      {
+                      {
                         isAdmin ? <>
                             <li><NavLink to="/dashboard/home"><FaSwatchbook></FaSwatchbook> Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/manageusers"> <FaUsers></FaUsers> Manage Users</NavLink></li> 
                         </> : <></>
-     }  
+                       }  
      <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
                     <li><NavLink to="/menu"> Our Menu</NavLink></li>
