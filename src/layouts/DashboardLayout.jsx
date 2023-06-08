@@ -22,14 +22,14 @@ const DashboardLayout = () => {
       {/* Sidebar content here */}
                       {
                         isAdmin ? <>
-                            <li><NavLink to="/dashboard/home"><FaSwatchbook></FaSwatchbook> Manage Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/manageclasses"><FaSwatchbook></FaSwatchbook> Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/manageusers"> <FaUsers></FaUsers> Manage Users</NavLink></li> 
                         </> : <></>
                        }  
                       {
                         isInstructor ? <>
                             <li><NavLink to="/dashboard/addclass"><FaSwatchbook></FaSwatchbook>Add A Class</NavLink></li>
-                            <li><NavLink to="/dashboard/manageusers"> <FaUsers></FaUsers>My Classes</NavLink></li> 
+                            <li><NavLink to="/dashboard/myclasses"> <FaUsers></FaUsers>My Classes</NavLink></li> 
                         </> : <></>
                        } 
                         

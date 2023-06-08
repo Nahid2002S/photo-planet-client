@@ -7,6 +7,12 @@ import Banner from "../banner/Banner";
 import DashboardLayout from "../layouts/DashboardLayout";
 import ManageUsers from "../pages/dashboard/manage-users/ManageUsers";
 import Addclass from "../pages/dashboard/addclass/Addclass";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import Instructors from "../pages/instructors/instructors";
+import MyClasses from "../pages/dashboard/myclasses/MyClasses";
+import ManageClasses from "../pages/dashboard/manageclasses/ManageClasses";
+import Feedback from "../pages/dashboard/feedback/feedback";
 
 const router = createBrowserRouter([
     {
@@ -24,20 +30,36 @@ const router = createBrowserRouter([
         {
           path: 'login',
           element: <Login></Login>
+        },
+        {
+          path: 'instructors',
+          element: <Instructors></Instructors>
         }
       ]
     },
     {
       path: 'dashboard',
-      element: <DashboardLayout></DashboardLayout>,
+      element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
       children: [
         {
           path: 'manageusers',
-          element: <ManageUsers></ManageUsers>
+          element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
         },
         {
           path: 'addclass',
           element: <Addclass></Addclass>
+        },
+        {
+          path: 'myclasses',
+          element: <MyClasses></MyClasses>
+        },
+        {
+          path: 'manageclasses',
+          element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+        },
+        {
+          path: 'feedback',
+          element: <AdminRoute><Feedback></Feedback></AdminRoute>
         }
       ]
     }

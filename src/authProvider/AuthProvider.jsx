@@ -22,6 +22,7 @@ const AuthProvider = ({children}) => {
 
     const googleProvider = new GoogleAuthProvider();
     const googleAuth = () =>{
+        setLoading(true)
         return signInWithPopup(auth, googleProvider);
     }
 
@@ -36,13 +37,12 @@ const AuthProvider = ({children}) => {
                 .then(data =>{
                     console.log(data.data.token)
                     localStorage.setItem('access-token', data.data.token)
+                    setLoading(false)
                 })
             }
             else{
                 localStorage.removeItem('access-token')
             }
-
-            setLoading(false)
         });
 
         return ()=>{
@@ -57,6 +57,7 @@ const AuthProvider = ({children}) => {
     }
 
     const logOut = () =>{
+        setLoading(true)
         return signOut(auth);
     }
 

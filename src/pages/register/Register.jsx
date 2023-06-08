@@ -14,7 +14,6 @@ const Register = () => {
     const navigate = useNavigate();
 
     const onSubmit = data => {
-        console.log(data);
         registerUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
