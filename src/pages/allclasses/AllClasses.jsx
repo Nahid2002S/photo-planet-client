@@ -5,6 +5,7 @@ import useInstructor from '../../hooks/useInstructor';
 const AllClasses = () => {
 
     const [approvedClasses, setApprovedClasses] = useState([]);
+    const [availableSeats, setAvailableSeats] = useState('');
     useEffect(()=>{
         fetch('http://localhost:5000/classes/approve')
         .then(res=> res.json())
@@ -15,6 +16,32 @@ const AllClasses = () => {
 
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
+
+    const handleSelected = classes =>{
+      const {_id, className, email, image, instructorName, price, seats} = classes;
+
+      const newSeats = parseFloat(seats) - 1;
+
+      fetch('http://localhost:5000/selected', {
+        method: 'POST',
+        headers: {
+          'content-type' : 'application/json'
+        },
+        body: JSON.stringify({className, email, image, instructorName, price, seats})
+      })
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data)
+      })
+
+      // fetch(`http://localhost:5000/classes/approve/${_id}`, {
+      //   method: 'PATCH',
+      // })
+      // .then(res => res.json())
+      // .then(data =>{
+      //   console.log(data)
+      // })
+    }
 
     return (
         <div className='mt-16'>
@@ -29,8 +56,8 @@ const AllClasses = () => {
                 <p>Instructor Name: {approvedclass.instructorName}</p>
                 <p>Instructor: {approvedclass.email}</p>
                 <p>Price: {approvedclass.price}</p>
-                <p>Available Seats: {approvedclass.seats}</p>
-                <button disabled={isAdmin || isInstructor} className="btn text-white bg-orange-600">Select</button>
+                <p>Available Seats: {availableSeats ? availableSeats : approvedclass.seats}</p>
+                <button onClick={()=> handleSelected(approvedclass)} disabled={isAdmin || isInstructor} className="btn text-white bg-orange-600">Select</button>
                 </div>
               </div>
             </div>)

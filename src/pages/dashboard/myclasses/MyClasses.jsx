@@ -5,6 +5,7 @@ const MyClasses = () => {
     const {user} = useContext(AuthContext);
     const [classes, setClasses] = useState([])
 
+    const [showFeedback, setShowFeedback] = useState('')
     useEffect(()=>{
         fetch(`http://localhost:5000/classes/${user?.email}`)
         .then(res => res.json())
@@ -14,8 +15,24 @@ const MyClasses = () => {
         })
     },[])
 
+    const handleSeeFeedback = feedback =>{
+      setShowFeedback(feedback)
+    }
+
     return (
         <div>
+
+<input type="checkbox" id="my_modal_7" className="modal-toggle" />
+<div className="modal">
+  <div className="modal-box">
+    <h3 className="text-3xl font-bold mb-3">Admin Feedback:</h3>
+    <p>{showFeedback}</p>
+    <div className="modal-action">
+      <label htmlFor="my_modal_7" className="btn">Close!</label>
+    </div>
+  </div>
+</div>
+
             <h1 className='text-3xl font-semibold my-4'>My Classes: {classes.length}</h1>
             <div className='grid grid-cols-2 gap-4'>
             {
@@ -33,6 +50,9 @@ const MyClasses = () => {
                 }
                 <div className="card-actions my-2">
                   <button className="btn btn-primary">Update</button>
+                  {
+                  cls.feedback ? <label htmlFor="my_modal_7" className="btn btn-primary" onClick={()=>handleSeeFeedback(cls.feedback.feedback)}>See Feedback</label> : ''
+                }
                 </div>
               </div>
             </div>

@@ -8,9 +8,9 @@ const ManageClasses = () => {
     const [allClasses, setAllClasses] = useState([])
 
     const [feedback, setFeedback] = useState('');
+    const [newId, setNewId] = useState('');
 
-    const singleClasses = allClasses.map(classs => classs._id);
-    console.log(singleClasses)
+    const [axiosSecure] = useAxiosSecure();
 
     useEffect(()=>{
         fetch('http://localhost:5000/classes')
@@ -45,32 +45,38 @@ const ManageClasses = () => {
         setFeedback(adminFeedback)
     }
 
-    const handleSend = () =>{
-        const [axiosSecure] = useAxiosSecure();
+    const handleId = (id) =>{
+        setNewId(id)
+    }
 
-       const {data : feedback = [], refetch} = useQuery(['feedback'], async() => {
-        const res = await axiosSecure.patch('/classes/feedback/${}')
-        console.log(res.data)
-        return res.data;
-    })
-        console.log(feedback)
+    const handleSend = () =>{
+        fetch(`http://localhost:5000/classes/feedback/${newId}`,{
+            method : 'PUT',
+            headers: {
+                'content-type' : 'application/json',
+            },
+            body: JSON.stringify({feedback : feedback})
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data)
+        }) 
     }
 
 
     return (
         <div>
-         <div>
-         <dialog id="my_modal_3" className="modal">
-         <div className='modal-box'>
-          <form method="dialog" className="">
-          <button htmlFor="my-modal-3" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-red-500 text-white">✕</button>
-            <h3 className="font-bold text-3xl my-4">Send Feedback!</h3>
-            <textarea onChange={(event)=> handleFeedback(event)} placeholder="Feedback" name='text' className="textarea textarea-bordered w-[29rem] h-[8rem]" ></textarea>
-            <button className='btn btn-primary my-3'>Send</button>
-          </form>
-         </div>
-           </dialog>
-            </div>
+            <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+          <div className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg mb-4">Send Feedback!</h3>
+            <textarea onChange={(event)=> handleFeedback(event)} placeholder="Write Feedback" className="textarea textarea-bordered w-[29rem] h-[6rem]" ></textarea>
+            <button onClick={handleSend} className='my-2 btn btn-primary'>Send</button>
+           <div className="modal-action">
+          <label htmlFor="my_modal_6" className="btn">Close!</label>
+       </div>
+      </div>
+    </div>
 
             <h1 className='text-3xl font-semibold my-4'>Manage Classes: {allClasses.length}</h1>
             <div className='grid grid-cols-2 gap-4'>
@@ -90,7 +96,7 @@ const ManageClasses = () => {
                 <div className='flex gap-2'>
                 <button onClick={()=>handleApproved(singleclass._id)} className="btn btn-sm text-white bg-green-600" disabled={singleclass.status === 'approved' || singleclass.status === 'denied'}>Approve</button>
                 <button onClick={()=>handleDeny(singleclass._id)} className="btn btn-sm text-white bg-red-600" disabled={singleclass.status === 'approved' || singleclass.status === 'denied'}>Deny</button>
-                <button className="btn btn-sm text-white bg-orange-600" onClick={()=>window.my_modal_3.showModal()}>Send Feedback</button>
+                <label onClick={()=> handleId(singleclass._id)} className="btn btn-sm text-white bg-orange-600" htmlFor="my_modal_6">Send Feedback</label>
                 </div>
               </div>
             </div>
