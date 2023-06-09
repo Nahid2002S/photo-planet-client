@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../authProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const SelectedClass = () => {
     const {user} = useContext(AuthContext)
@@ -48,7 +49,7 @@ const SelectedClass = () => {
             <h1 className='text-3xl font-semibold my-4'>Selected Classes: {selectedClasses.length}</h1>
             <div className='grid grid-cols-2 mb-4 gap-4'>
             {
-              selectedClasses.map(selectedClass => <div key={selectedClasses._id} className='mx-auto'>
+              selectedClasses.map(selectedClass => <div key={selectedClass._id} className='mx-auto'>
                 <div className="card w-96 bg-base-100 shadow-xl">
               <figure><img src={selectedClass.image} alt="Shoes" /></figure>
               <div className="card-body">
@@ -58,7 +59,7 @@ const SelectedClass = () => {
                 <p>Price: {selectedClass.price}</p>
                 <p>Available Seats: {selectedClass.seats}</p>
                 <div className='flex gap-2'>
-                <button className='btn bg-orange-600'>Pay</button>
+                <Link to='/dashboard/payment'><button className='btn bg-orange-600'>Pay</button></Link>
                 <button onClick={()=> handleDelete(selectedClass._id)} className='btn bg-red-600'>Delete</button>
                 </div>
                 </div>

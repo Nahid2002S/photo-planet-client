@@ -6,7 +6,6 @@ import { AuthContext } from '../../authProvider/AuthProvider';
 const AllClasses = () => {
 
     const [approvedClasses, setApprovedClasses] = useState([]);
-    const [availableSeats, setAvailableSeats] = useState('');
 
     useEffect(()=>{
         fetch('http://localhost:5000/classes/approve')
@@ -35,18 +34,6 @@ const AllClasses = () => {
       .then(data =>{
         console.log(data)
       })
-
-      // fetch(`http://localhost:5000/classes/approve/seats/${_id}`, {
-      //   method: 'PATCH',
-      //   headers: {
-      //     'content-type' : 'application/json'
-      //   },
-      //   body: JSON.stringify({seats : parseFloat(seats)})
-      // })
-      // .then(res => res.json())
-      // .then(data =>{
-      //   console.log(data)
-      // })
     }
 
     return (

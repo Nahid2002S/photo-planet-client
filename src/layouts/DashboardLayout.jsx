@@ -37,14 +37,12 @@ const DashboardLayout = () => {
                         !isInstructor && !isAdmin ? <>
                             <li><NavLink to="/dashboard/selectedclass"><FaSwatchbook></FaSwatchbook>My Selected Classes</NavLink></li>
                             <li><NavLink to="/dashboard/manageusers"> <FaUsers></FaUsers>My Enrolled Classes</NavLink></li> 
-                            <li><NavLink to="/dashboard/manageusers"> <FaUsers></FaUsers>Payment</NavLink></li> 
+                            <li><NavLink to="/dashboard/payment"> <FaUsers></FaUsers>Payment</NavLink></li> 
                         </> : <></>
                        } 
 
      <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
-                    <li><NavLink to="/menu"> Our Menu</NavLink></li>
-                    <li><NavLink to="/order/salad">Order Food</NavLink></li>
                 </ul>
   
   </div>
