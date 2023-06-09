@@ -59,7 +59,7 @@ const SelectedClass = () => {
                 <p>Price: {selectedClass.price}</p>
                 <p>Available Seats: {selectedClass.seats}</p>
                 <div className='flex gap-2'>
-                <Link to='/dashboard/payment'><button className='btn bg-orange-600'>Pay</button></Link>
+                <Link to={`/dashboard/payment/${selectedClass._id}`}><button className='btn bg-orange-600'>Pay</button></Link>
                 <button onClick={()=> handleDelete(selectedClass._id)} className='btn bg-red-600'>Delete</button>
                 </div>
                 </div>
