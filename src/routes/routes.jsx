@@ -13,6 +13,7 @@ import Instructors from "../pages/instructors/instructors";
 import MyClasses from "../pages/dashboard/myclasses/MyClasses";
 import ManageClasses from "../pages/dashboard/manageclasses/ManageClasses";
 import Feedback from "../pages/dashboard/feedback/feedback";
+import AllClasses from "../pages/allclasses/AllClasses";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         {
           path: 'instructors',
           element: <Instructors></Instructors>
+        },
+        {
+          path: 'classes',
+          element: <AllClasses></AllClasses>
         }
       ]
     },
