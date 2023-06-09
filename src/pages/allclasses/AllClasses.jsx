@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import useAdmin from '../../hooks/useAdmin';
 import useInstructor from '../../hooks/useInstructor';
+import { AuthContext } from '../../authProvider/AuthProvider';
 
 const AllClasses = () => {
 
     const [approvedClasses, setApprovedClasses] = useState([]);
     const [availableSeats, setAvailableSeats] = useState('');
+
     useEffect(()=>{
         fetch('http://localhost:5000/classes/approve')
         .then(res=> res.json())
@@ -17,25 +19,29 @@ const AllClasses = () => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
 
+    const {user} = useContext(AuthContext)
+
     const handleSelected = classes =>{
       const {_id, className, email, image, instructorName, price, seats} = classes;
-
-      const newSeats = parseFloat(seats) - 1;
 
       fetch('http://localhost:5000/selected', {
         method: 'POST',
         headers: {
           'content-type' : 'application/json'
         },
-        body: JSON.stringify({className, email, image, instructorName, price, seats})
+        body: JSON.stringify({className, email, image, instructorName, price, seats, selectedBy : user?.email})
       })
       .then(res => res.json())
       .then(data =>{
         console.log(data)
       })
 
-      // fetch(`http://localhost:5000/classes/approve/${_id}`, {
+      // fetch(`http://localhost:5000/classes/approve/seats/${_id}`, {
       //   method: 'PATCH',
+      //   headers: {
+      //     'content-type' : 'application/json'
+      //   },
+      //   body: JSON.stringify({seats : parseFloat(seats)})
       // })
       // .then(res => res.json())
       // .then(data =>{
@@ -54,9 +60,9 @@ const AllClasses = () => {
               <div className="card-body">
                 <h2 className="card-title">Class Name: {approvedclass.className}</h2>
                 <p>Instructor Name: {approvedclass.instructorName}</p>
-                <p>Instructor: {approvedclass.email}</p>
+                <p>Instructor Email: {approvedclass.email}</p>
                 <p>Price: {approvedclass.price}</p>
-                <p>Available Seats: {availableSeats ? availableSeats : approvedclass.seats}</p>
+                <p>Available Seats: {approvedclass.seats}</p>
                 <button onClick={()=> handleSelected(approvedclass)} disabled={isAdmin || isInstructor} className="btn text-white bg-orange-600">Select</button>
                 </div>
               </div>

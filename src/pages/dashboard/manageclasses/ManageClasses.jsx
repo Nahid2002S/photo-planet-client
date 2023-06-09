@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
 
 const ManageClasses = () => {
 
@@ -9,8 +6,6 @@ const ManageClasses = () => {
 
     const [feedback, setFeedback] = useState('');
     const [newId, setNewId] = useState('');
-
-    const [axiosSecure] = useAxiosSecure();
 
     useEffect(()=>{
         fetch('http://localhost:5000/classes')
