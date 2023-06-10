@@ -79,6 +79,7 @@ const Checkoutform = ({price, payClass}) => {
             const payment = {email : user?.email,
                              transactionId: paymentIntent.id,
                              date: new Date(),
+                             image: payClass.image,
                              price,
                              className : payClass.className,
                              instructorEmail : payClass.email,
@@ -88,6 +89,15 @@ const Checkoutform = ({price, payClass}) => {
             axiosSecure.post('/payments', payment)
             .then(res =>{
               if(res.data.insertedId){
+                
+                fetch(`http://localhost:5000/selected/${payClass._id}`, {
+                  method: 'DELETE'
+                })
+                .then(res => res.json())
+                .then(data => {
+                  console.log(data)
+                })
+
                 Swal.fire({
                   position: 'top-end',
                   icon: 'success',
