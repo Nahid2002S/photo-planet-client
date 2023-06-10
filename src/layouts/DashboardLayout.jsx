@@ -37,7 +37,7 @@ const DashboardLayout = () => {
                         !isInstructor && !isAdmin ? <>
                             <li><NavLink to="/dashboard/selectedclass"><FaSwatchbook></FaSwatchbook>My Selected Classes</NavLink></li>
                             <li><NavLink to="/dashboard/manageusers"> <FaUsers></FaUsers>My Enrolled Classes</NavLink></li> 
-                            <li><NavLink to="/dashboard/ma"> <FaUsers></FaUsers>Payment</NavLink></li> 
+                            <li><NavLink to='/pay'> <FaUsers></FaUsers>Payment</NavLink></li> 
                         </> : <></>
                        } 
 

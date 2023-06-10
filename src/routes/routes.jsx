@@ -16,11 +16,13 @@ import Feedback from "../pages/dashboard/feedback/feedback";
 import AllClasses from "../pages/allclasses/AllClasses";
 import SelectedClass from "../pages/dashboard/selectedclass/SelectedClass";
 import Payment from "../pages/dashboard/payment/payment";
+import ErrorPage from "../pages/errorpage/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout></Layout>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: '/',
@@ -47,6 +49,7 @@ const router = createBrowserRouter([
     {
       path: 'dashboard',
       element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: 'manageusers',

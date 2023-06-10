@@ -2,8 +2,9 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../authProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
-const Checkoutform = ({price}) => {
+const Checkoutform = ({price, payClass}) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -74,7 +75,28 @@ const Checkoutform = ({price}) => {
 
         setProcessing(false)
         if(paymentIntent.status === 'succeeded'){
-            setTransactionId(paymentIntent.id)
+            setTransactionId(paymentIntent.id);
+            const payment = {email : user?.email,
+                             transactionId: paymentIntent.id,
+                             date: new Date(),
+                             price,
+                             className : payClass.className,
+                             instructorEmail : payClass.email,
+                             instructorName: payClass.instructorName,
+                             classId : payClass._id
+                            }
+            axiosSecure.post('/payments', payment)
+            .then(res =>{
+              if(res.data.insertedId){
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Payment Successful',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+              }
+            })
         }
 
     }
