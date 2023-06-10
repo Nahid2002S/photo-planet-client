@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../authProvider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const MyClasses = () => {
     const {user} = useContext(AuthContext);
@@ -45,11 +46,9 @@ const MyClasses = () => {
                 <p>Instructor: {cls.email}</p>
                 <p>Price: {cls.price}</p>
                 <p>Available Seats: {cls.seats}</p>
-                {
-                    cls.status ? <span>Status: <div className="badge badge-secondary">{cls.status}</div></span> : <span>Status: <div className="badge badge-secondary">pending</div></span>
-                }
+                 <span>Status: <div className="badge badge-secondary">{cls.status}</div></span>
                 <div className="card-actions my-2">
-                  <button className="btn btn-primary">Update</button>
+                  <Link to={`/dashboard/myclasses/update/${cls._id}`}><button className="btn btn-primary">Update</button></Link>
                   {
                   cls.feedback ? <label htmlFor="my_modal_7" className="btn btn-primary" onClick={()=>handleSeeFeedback(cls.feedback.feedback)}>See Feedback</label> : ''
                 }

@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaUsers, FaSwatchbook, FaHome } from 'react-icons/fa';
+import { FaUsers, FaSwatchbook, FaHome, FaUserCheck } from 'react-icons/fa';
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 
@@ -37,12 +37,14 @@ const DashboardLayout = () => {
                         !isInstructor && !isAdmin ? <>
                             <li><NavLink to="/dashboard/selectedclass"><FaSwatchbook></FaSwatchbook>My Selected Classes</NavLink></li>
                             <li><NavLink to="/dashboard/enrollclasses"> <FaUsers></FaUsers>My Enrolled Classes</NavLink></li> 
-                            <li><NavLink to='/pay'> <FaUsers></FaUsers>Payment</NavLink></li> 
+                            <li><NavLink to='/dashboard/paymenthistory'> <FaUsers></FaUsers>Payment History</NavLink></li> 
                         </> : <></>
                        } 
 
-     <div className="divider"></div>
+                   <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
+                    <li><NavLink to="/instructors"><FaUserCheck></FaUserCheck> Instructors</NavLink> </li>
+                    <li><NavLink to="/classes"><FaSwatchbook></FaSwatchbook> Classes</NavLink> </li>
                 </ul>
   
   </div>

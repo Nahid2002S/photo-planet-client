@@ -18,6 +18,8 @@ import SelectedClass from "../pages/dashboard/selectedclass/SelectedClass";
 import Payment from "../pages/dashboard/payment/payment";
 import ErrorPage from "../pages/errorpage/ErrorPage";
 import EnrollClasses from "../pages/dashboard/enrollClasses/EnrollClasses";
+import PaymentHistory from "../pages/dashboard/paymenthistory/PaymentHistory";
+import UpdateMyClass from "../pages/dashboard/updateMyClass/UpdateMyClass";
 
 const router = createBrowserRouter([
     {
@@ -65,6 +67,10 @@ const router = createBrowserRouter([
           element: <MyClasses></MyClasses>
         },
         {
+          path: 'myclasses/update/:id',
+          element: <UpdateMyClass></UpdateMyClass>
+        },
+        {
           path: 'manageclasses',
           element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
         },
@@ -83,6 +89,10 @@ const router = createBrowserRouter([
         {
           path: 'enrollclasses',
           element: <EnrollClasses></EnrollClasses>
+        },
+        {
+          path: 'paymenthistory',
+          element: <PaymentHistory></PaymentHistory>
         }
       ]
     }

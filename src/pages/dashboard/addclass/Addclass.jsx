@@ -32,7 +32,7 @@ const Addclass = () => {
         .then(data =>{
             if(data.success){
                 const imageUrl = data.data.display_url;
-                const newClass = {className, instructorName, email, seats, price : parseFloat(price), image : imageUrl}
+                const newClass = {className, instructorName, email, seats, price : parseFloat(price), image : imageUrl, status : 'pending'}
                 axiosSecure.post('/classes', newClass)
                 .then(data=>{
                     if(data.data.insertedId){
@@ -57,29 +57,29 @@ const Addclass = () => {
                 <div className='w-[40%]'>
                     <label>
                         Class Name: <br />
-                        <input type="text" name='name' className='w-[100%] text-black px-4 py-2 rounded-md mb-2' />
+                        <input type="text" name='name' className='w-[100%] text-black px-4 py-2 rounded-md mb-2' required />
                     </label> <br />
                     <label htmlFor="">
                         Class Image: <br />
-                        <input type="file" name='image' className="file-input file-input-bordered w-full text-black" />
+                        <input type="file" name='image' className="file-input file-input-bordered w-full text-black" required />
                     </label> <br />
                     <label htmlFor="">
                         Instructor Name: <br />
-                        <input defaultValue={user?.displayName} type="text" name='instructorname' className='w-[100%] text-black px-4 py-2 rounded-md mb-2' />
+                        <input defaultValue={user?.displayName} readOnly type="text" name='instructorname' className='w-[100%] text-black px-4 py-2 rounded-md mb-2' />
                     </label> <br />
                 </div>
                 <div className='w-[40%]'>
                 <label htmlFor="">
                         Instructor Email: <br />
-                        <input defaultValue={user?.email} type="text" name='email' className='w-[100%] text-black px-4 py-2 rounded-md mb-2' />
+                        <input defaultValue={user?.email} readOnly type="text" name='email' className='w-[100%] text-black px-4 py-2 rounded-md mb-2' />
                     </label> <br />
                     <label htmlFor="">
                         Available Seats: <br />
-                        <input type="text" name='seats' className='w-[100%] text-black px-4 py-2 rounded-md mb-2' />
+                        <input type="text" name='seats' className='w-[100%] text-black px-4 py-2 rounded-md mb-2' required />
                     </label> <br />
                     <label htmlFor="">
                         Price: <br />
-                        <input type="text" name='price' className='w-[100%] text-black px-4 py-2 rounded-md mb-2' />
+                        <input type="text" name='price' className='w-[100%] text-black px-4 py-2 rounded-md mb-2' required />
                     </label>
                 </div>
                 </div>
