@@ -75,10 +75,6 @@ const router = createBrowserRouter([
           element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
         },
         {
-          path: 'feedback',
-          element: <AdminRoute><Feedback></Feedback></AdminRoute>
-        },
-        {
           path: 'selectedclass',
           element: <SelectedClass></SelectedClass>
         },

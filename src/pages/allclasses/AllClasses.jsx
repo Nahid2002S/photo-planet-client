@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import useAdmin from '../../hooks/useAdmin';
-import useInstructor from '../../hooks/useInstructor';
 import { AuthContext } from '../../authProvider/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const AllClasses = () => {
 
     const [approvedClasses, setApprovedClasses] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         fetch('http://localhost:5000/classes/approve')
@@ -15,12 +16,26 @@ const AllClasses = () => {
         })
     },[])
 
-    const [isAdmin] = useAdmin();
-    const [isInstructor] = useInstructor();
-
     const {user} = useContext(AuthContext)
 
     const handleSelected = classes =>{
+
+      if(!user){
+        Swal.fire({
+          title: 'Please Login First',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Login'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate('/login')
+          }
+        })
+        return
+      }
+
       const {_id, className, email, image, instructorName, price, seats, student} = classes;
 
       fetch('http://localhost:5000/selected', {
@@ -50,7 +65,7 @@ const AllClasses = () => {
                 <p>Instructor Email: {approvedclass.email}</p>
                 <p>Price: {approvedclass.price}</p>
                 <p>Available Seats: {approvedclass.seats}</p>
-                <button onClick={()=> handleSelected(approvedclass)} disabled={isAdmin || isInstructor || approvedclass.seats == 0} className="btn text-white bg-orange-600">Select</button>
+                <button onClick={()=> handleSelected(approvedclass)} disabled={approvedclass.seats === 'admin' || approvedclass.seats === 'instructor' || approvedclass.seats == 0} className="btn text-white bg-orange-600">Select</button>
                 </div>
               </div>
             </div>)

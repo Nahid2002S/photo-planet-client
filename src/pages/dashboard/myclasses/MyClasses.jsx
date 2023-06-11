@@ -46,6 +46,7 @@ const MyClasses = () => {
                 <p>Instructor: {cls.email}</p>
                 <p>Price: {cls.price}</p>
                 <p>Available Seats: {cls.seats}</p>
+                <p>Total enrolled Students: {cls.student}</p>
                  <span>Status: <div className="badge badge-secondary">{cls.status}</div></span>
                 <div className="card-actions my-2">
                   <Link to={`/dashboard/myclasses/update/${cls._id}`}><button className="btn btn-primary">Update</button></Link>
