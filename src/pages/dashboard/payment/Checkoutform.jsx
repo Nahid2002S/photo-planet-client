@@ -5,6 +5,7 @@ import { AuthContext } from '../../../authProvider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Checkoutform = ({price, payClass}) => {
+  console.log(payClass)
 
     const stripe = useStripe();
     const elements = useElements();
@@ -75,6 +76,9 @@ const Checkoutform = ({price, payClass}) => {
 
         setProcessing(false)
         if(paymentIntent.status === 'succeeded'){
+          const updateSeats = payClass.seats - 1;
+          const updateStudent = payClass.student + 1;
+
             setTransactionId(paymentIntent.id);
             const payment = {email : user?.email,
                              transactionId: paymentIntent.id,
@@ -107,8 +111,12 @@ const Checkoutform = ({price, payClass}) => {
                 })
               }
             })
-        }
 
+            axiosSecure.put(`/classes/${payClass.classId}`,{seats: updateSeats, student: updateStudent})
+            .then(res => {
+              console.log(res.data)
+            })
+        }
     }
 
     return (

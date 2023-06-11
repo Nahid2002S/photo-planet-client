@@ -32,7 +32,7 @@ const Addclass = () => {
         .then(data =>{
             if(data.success){
                 const imageUrl = data.data.display_url;
-                const newClass = {className, instructorName, email, seats, price : parseFloat(price), image : imageUrl, status : 'pending'}
+                const newClass = {className, instructorName, email, seats, price : parseFloat(price), image : imageUrl, status : 'pending', student : 0}
                 axiosSecure.post('/classes', newClass)
                 .then(data=>{
                     if(data.data.insertedId){
