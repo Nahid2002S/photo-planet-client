@@ -91,8 +91,8 @@ const ManageUsers = () => {
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>
-                <button onClick={()=> handleMakeAdmin(user)} className='bg-green-600 text-white p-2 rounded-md font-semibold mr-2' disabled={user.role === 'admin' || 'instructors'}>Make Admin</button>
-                <button onClick={() => handleMakeInstructor(user)} className='bg-orange-600 text-white p-2 rounded-md font-semibold' disabled={user.role === 'admin' || 'instructors'}>Make Instructor</button>
+                <button onClick={()=> handleMakeAdmin(user)} className='bg-green-600 text-white p-2 rounded-md font-semibold mr-2' disabled={user.role === 'admin' || user.role === 'instructors'}>Make Admin</button>
+                <button onClick={() => handleMakeInstructor(user)} className='bg-orange-600 text-white p-2 rounded-md font-semibold' disabled={user.role === 'admin' || user.role === 'instructors'}>Make Instructor</button>
             </td>
             <td><button onClick={()=> handleDelete(user._id)} className='bg-red-600 p-2 text-white rounded-md'><FaTrashAlt></FaTrashAlt></button></td>
           </tr>)

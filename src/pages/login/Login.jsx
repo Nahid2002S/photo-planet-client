@@ -2,20 +2,26 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImage from '../../assets/loginImage.png'
 import { AuthContext } from '../../authProvider/AuthProvider';
+import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash  } from 'react-icons/fa';
+import { useState } from 'react';
 
 const Login = () => {
     const {loginUser, googleAuth} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    
-    const handleLogin = event =>{
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
 
-        loginUser(email, password)
+    const [seeLoginPass, setSeeLoginPass] = useState(false);
+    const handleSeePass = () =>{
+        setSeeLoginPass(!seeLoginPass)
+    }
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+    const onSubmit = data =>{
+
+        loginUser(data.email, data.password)
         .then(result =>{
             navigate(from, {replace : true})
         })
@@ -53,16 +59,23 @@ const Login = () => {
         <div className='px-8 py-6 bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 lg:w-[55%] mx-auto mt-6 rounded-md'>
         <h3 className='text-center text-black text-3xl font-semibold mb-6 '>Please <span className='text-indigo-200'>Login!!!</span></h3>
         <div className='md:flex items-center gap-4'>
-            <div className='md:w-[50%]'>
+            <div className='md:w-[60%]'>
                 <img src={loginImage} alt="" />
             </div>
         <div className='md:w-[50%]'>
-        <form onSubmit={handleLogin} className='flex flex-col gap-4'>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
             <label htmlFor="" className='text-xl font-semibold text-black'>Email: <br />
-            <input type="email" name="email" id="email" className='px-4 py-2 rounded-md w-full' required/>
+            <input {...register("email", { required: true })} type="email" name="email" id="email" className='px-4 py-2 rounded-md w-full' required/>
             </label>
             <label htmlFor="" className='text-xl font-semibold text-black'>Password: <br />
-            <input type="password" name="password" id="password" className='px-4 py-2 rounded-md w-full' required />
+            <div className='flex items-center bg-[#E8F0FE] w-full rounded-md'>
+            <div>
+            <input {...register("password", { required: true })} type={seeLoginPass ? 'text' : 'password'} name="password" id="password" className='px-4 py-2 rounded-md w-full bg-white' required />
+            </div>
+            <div>
+            <div className='-ml-2'>{ seeLoginPass ? <FaEyeSlash onClick={handleSeePass} className='cursor-pointer'></FaEyeSlash> : <FaEye onClick={handleSeePass} className='cursor-pointer'></FaEye>}</div>
+            </div>
+            </div>
             </label>
             <p className='font-semibold text-red-200'></p>
             <button className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r from-indigo-800 to-black shadow:md">Login</button>
