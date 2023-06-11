@@ -112,7 +112,7 @@ const Checkoutform = ({price, payClass}) => {
               }
             })
 
-            axiosSecure.put(`/classes/${payClass.classId}`,{seats: updateSeats, student: updateStudent})
+            axiosSecure.put(`/selected/pay/${payClass.classId}`,{seats: updateSeats, student: updateStudent})
             .then(res => {
               console.log(res.data)
             })

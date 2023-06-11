@@ -93,13 +93,11 @@ const Register = () => {
                <div><input className='px-4 py-2 rounded-md w-full border-0 outline-none' type={seePass ? 'text' : 'password'}  {...register("password", {
                                     required: true,
                                     minLength: 6,
-                                    maxLength: 20,
-                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
                                 })} placeholder="password" />
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-                                {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
-                                {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}</div>
+                                {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase and one special character.</p>}</div>
                                 <div className='-ml-2'>{ seePass ? <FaEyeSlash onClick={handleSeePass} className='cursor-pointer'></FaEyeSlash> : <FaEye onClick={handleSeePass} className='cursor-pointer'></FaEye>}</div>
                </div>
             </label>

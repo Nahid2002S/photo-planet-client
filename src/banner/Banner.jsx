@@ -5,10 +5,12 @@ import { Carousel } from 'react-responsive-carousel';
 import img1 from '../assets/cam-1.png'
 import img2 from '../assets/cam-2.png'
 import img3 from '../assets/cam-3.png'
+import PopularClasses from '../popularClass/PopularClass';
 
 const Banner = () => {
     return (
-        <Carousel className='text-center'>
+        <div>
+            <Carousel className='text-center'>
                 <div className='lg:h-[100vh]'>
                     <img src={img1} />
                     <h1 className='absolute lg:top-[30%] lg:right-[15%] top-[20%] right-[15%] lg:text-5xl text-3xl text-white font-bold'>Photo Galaxy</h1>
@@ -22,6 +24,8 @@ const Banner = () => {
                     <img src={img3} />
                 </div>
             </Carousel>
+            <PopularClasses></PopularClasses>
+        </div>
     );
 };
 
