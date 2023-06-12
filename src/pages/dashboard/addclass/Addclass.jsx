@@ -85,7 +85,7 @@ const Addclass = () => {
                 </div>
                 </div>
                 <div className='px-16 mt-2'>
-                    <button className='px-4 py-2 bg-indigo-500 w-full rounded-md'>Add Class</button>
+                    <button className='px-4 py-2 bg-gradient-to-r from-violet-300 to-violet-400 w-full rounded-md'>Add Class</button>
                 </div>
             </form>
         </div>

@@ -68,7 +68,7 @@ const AllClasses = () => {
                 <p>Instructor Email: {approvedclass.email}</p>
                 <p>Price: {approvedclass.price}</p>
                 <p>Available Seats: {approvedclass.seats}</p>
-                <button onClick={()=> handleSelected(approvedclass)} disabled={approvedclass.seats === 'admin' || approvedclass.seats === 'instructor' || approvedclass.seats == 0} className="btn text-white bg-orange-600">Select</button>
+                <button onClick={()=> handleSelected(approvedclass)} disabled={approvedclass.seats === 'admin' || approvedclass.seats === 'instructor' || approvedclass.seats == 0} className="bg-gradient-to-r from-violet-300 to-violet-400 px-4 py-2 rounded-md text-black font-semibold">Select</button>
                 </div>
               </div>
             </div>)

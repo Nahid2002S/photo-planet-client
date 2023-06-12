@@ -78,7 +78,7 @@ const ManageUsers = () => {
             <h1 className='text-3xl font-semibold my-4'>Total Users: {users.length}</h1>
             <div className="overflow-x-auto">
   <table className="table table-zebra text-center">
-    <thead className='bg-green-400'>
+    <thead className='bg-indigo-400 text-white'>
       <tr>
         <th>#</th>
         <th>Name</th>

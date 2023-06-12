@@ -81,7 +81,7 @@ const Login = () => {
             </div>
             </label>
             <p className='font-semibold text-red-200'></p>
-            <button className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r from-indigo-800 to-black shadow:md">Login</button>
+            <button className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r from-violet-300 to-violet-400 shadow:md">Login</button>
             <hr />
             <Link onClick={handleGoogleLogin} className="btn btn-outline btn-primary">Login With Google</Link>
             <p>New User? Create Account <Link to='/register' className='text-blue-200 underline font-semibold'>Register</Link></p>

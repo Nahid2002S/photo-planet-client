@@ -69,7 +69,7 @@ const UpdateMyClass = () => {
                 </label>
             </div>
             <div className='mt-2'>
-                <button className='px-4 py-2 bg-indigo-500 w-full rounded-md'>Update</button>
+                <button className='px-4 py-2 bg-gradient-to-r from-violet-300 to-violet-400 w-full rounded-md'>Update</button>
             </div>
         </form>
     </div>

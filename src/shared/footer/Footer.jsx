@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className='bg-gradient-to-r from-violet-200 to-fuchsia-300 px-4 lg:px-10 py-6'>
+        <div className='bg-gradient-to-r from-violet-300 to-violet-400 px-4 lg:px-10 py-6'>
     <footer className="footer p-1">
   <div>
     <img src='' className='w-[10rem]' alt="" />

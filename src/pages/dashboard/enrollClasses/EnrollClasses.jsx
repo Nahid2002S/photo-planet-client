@@ -44,7 +44,7 @@ const EnrollClasses = () => {
                 </td>
                 <td>{enrollclass.instructorName}</td>
                 <td>{enrollclass.email}</td>
-                <td><button className='btn btn-primary'>View</button></td>
+                <td><button className='bg-gradient-to-r from-violet-300 to-violet-400 px-4 py-2 rounded-md text-black font-semibold'>View</button></td>
               </tr>)
          }
         </tbody>

@@ -119,7 +119,7 @@ const Register = () => {
             {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
             </label>
             {passerror ? <p className='text-red-500 font-semibold'>Password Not Matched</p> : ''}
-            <button className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r from-green-600 to-green-900 shadow:md">Register </button>
+            <button className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r from-violet-300 to-violet-400 shadow:md">Register </button>
             <p>Already have an account? <Link to='/login' className='text-blue-200 underline font-semibold'>Login</Link></p>
         </form>
         </div>

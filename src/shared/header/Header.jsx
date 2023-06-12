@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../authProvider/AuthProvider';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import logo from '../../assets/logo.png'
 
 const Header = () => {
 
@@ -36,7 +37,7 @@ const Header = () => {
   }
 
     return (
-        <div className="navbar bg-opacity-30 bg-black dark:bg-black fixed z-10 top-0 text-white">
+        <div className="navbar bg-opacity-60 bg-black dark:bg-black fixed z-10 top-0 text-white">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -54,15 +55,20 @@ const Header = () => {
       }
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl -ml-8 lg:ml-0">Photo Planet</a>
+    <div className='flex items-center'>
+      <div>
+        <img className='w-[100px] lg:w-[4rem] -ml-6 lg:ml-0' src={logo} alt="" />
+      </div>
+    <a className="font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-300 to-violet-300 -ml-4 lg:ml-0 text-xl">Photo Planet</a>
+    </div>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-    <li><NavLink to='/' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Home</NavLink></li>
-      <li><NavLink to='/instructors' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Instructors</NavLink></li>
-      <li><NavLink to='/classes' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Classes</NavLink></li>
+    <li><NavLink to='/' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-300 to-violet-300' : '')}>Home</NavLink></li>
+      <li><NavLink to='/instructors' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-300 to-violet-300' : '')}>Instructors</NavLink></li>
+      <li><NavLink to='/classes' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-300 to-violet-300' : '')}>Classes</NavLink></li>
       {
-        !user ? '' : <li><NavLink to='/dashboard' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-200 to-fuchsia-300' : '')}>Dashboard</NavLink></li>
+        !user ? '' : <li><NavLink to='/dashboard' className={({ isActive }) => (isActive ? 'font-extrabold text-transparent bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-violet-300 to-violet-300' : '')}>Dashboard</NavLink></li>
       }
       {
         !user ? <li><Link to='register'>Register</Link></li> : ""
@@ -79,9 +85,9 @@ const Header = () => {
   }
   <div className='lg:mr-8 mr-3'>
   {user ? <div>
-    <button onClick={handleLogOut}  className='bg-gradient-to-r from-violet-200 to-fuchsia-300 px-4 py-2 rounded-md text-black font-semibold'>Logout</button>
+    <button onClick={handleLogOut}  className='bg-gradient-to-r from-violet-300 to-violet-400 px-4 py-2 rounded-md text-black font-semibold'>Logout</button>
   </div> : <div>
-    <Link to='/login'><button className='bg-gradient-to-r from-violet-200 to-fuchsia-300 px-4 py-2 rounded-md text-black font-semibold'>Login</button></Link>
+    <Link to='/login'><button className='bg-gradient-to-r from-violet-300 to-violet-400 px-4 py-2 rounded-md text-black font-semibold'>Login</button></Link>
   </div>}
   </div>
   <label className="swap swap-rotate lg:mr-4">

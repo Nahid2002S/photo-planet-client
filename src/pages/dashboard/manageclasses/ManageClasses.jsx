@@ -69,7 +69,7 @@ const ManageClasses = () => {
           <div className="modal-box">
             <h3 className="font-bold text-lg mb-4">Send Feedback!</h3>
             <textarea onChange={(event)=> handleFeedback(event)} placeholder="Write Feedback" className="textarea textarea-bordered w-[29rem] h-[6rem]" ></textarea>
-            <button onClick={handleSend} className='my-2 btn btn-primary'>Send</button>
+            <button onClick={handleSend} className='my-2 btn bg-gradient-to-r from-violet-300 to-violet-400 px-4 py-2 rounded-md text-black font-semibold'>Send</button>
            <div className="modal-action">
           <label htmlFor="my_modal_6" className="btn">Close!</label>
        </div>

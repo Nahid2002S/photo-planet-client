@@ -138,7 +138,7 @@ const Checkoutform = ({price, payClass}) => {
           },
         }}
       />
-      <button type="submit" className='btn bg-orange-600 btn-sm my-4' disabled={!stripe || !clientSecret || processing}>
+      <button type="submit" className='btn bg-gradient-to-r from-violet-300 to-violet-400 btn-sm my-4' disabled={!stripe || !clientSecret || processing}>
         Pay
       </button>
     </form>
