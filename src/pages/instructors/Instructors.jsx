@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import useTitle from '../../hooks/useTitle';
 
 const Instructors = () => {
 
@@ -12,12 +13,14 @@ const Instructors = () => {
         return res.data;
     })
 
+    useTitle('Instructors')
+
 
     return (
 
 
         <div className="overflow-x-auto px-12 mt-16">
-  <table className="table">
+  <table className="table w-2/3 mx-auto">
     <thead>
       <tr>
         <th>#</th>
@@ -27,7 +30,7 @@ const Instructors = () => {
       </tr>
     </thead>
     <tbody>
-      {/* row 1 */}
+
      {
         instructors.map((instructor, index) =>  <tr key={instructor._id}>
             <th>{index + 1}</th>

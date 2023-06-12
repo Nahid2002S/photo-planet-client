@@ -7,6 +7,7 @@ import { AuthContext } from "../../authProvider/AuthProvider";
 import { FaEye, FaEyeSlash  } from 'react-icons/fa';
 
 import loginImage from '../../assets/loginImage.png'
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
 
@@ -69,6 +70,8 @@ const Register = () => {
                     .catch(error => console.log(error))
             })
     };
+
+    useTitle('Register')
 
     return (
         <div className='px-2 text-black mb-4'>

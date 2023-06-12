@@ -20,7 +20,7 @@ const topInstructors = () => {
                 {
                     topInstructors.map(topInstructor => <div key={topInstructor._id} className='mx-auto mb-3'>
                         <div className="card w-86 bg-base-100 shadow-xl">
-                    <figure><img src={topInstructor.photo} alt="Shoes" /></figure>
+                    <figure><img className='h-72' src={topInstructor.photo} alt="Shoes" /></figure>
                     <div className="card-body">
                       <p>Instructor Name: {topInstructor.name}</p>
                       <p>Instructor Email: {topInstructor.email}</p>

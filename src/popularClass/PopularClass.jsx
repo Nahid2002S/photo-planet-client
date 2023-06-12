@@ -19,7 +19,7 @@ const PopularClasses = () => {
                 {
                     popularClasses.map(popular => <div key={popular._id} className='mx-auto'>
                         <div className="card w-86 bg-base-100 shadow-xl">
-                    <figure><img src={popular.image} alt="Shoes" /></figure>
+                    <figure><img className='h-72' src={popular.image} alt="Shoes" /></figure>
                     <div className="card-body">
                       <h2 className="card-title">Class Name: {popular.className}</h2>
                       <p>Instructor Name: {popular.instructorName}</p>

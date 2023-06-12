@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../authProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 
 const AllClasses = () => {
 
@@ -51,6 +52,8 @@ const AllClasses = () => {
       })
     }
 
+    useTitle('Classes')
+
     return (
         <div className='mt-16'>
             <h1 className='text-3xl font-semibold my-4'>All Classes: {approvedClasses.length}</h1>
@@ -58,7 +61,7 @@ const AllClasses = () => {
             {
               approvedClasses.map(approvedclass => <div key={approvedclass._id} className='mx-auto'>
                 <div className={`card w-96 ${approvedclass.seats == 0 ? 'bg-red-400' : 'bg-base-100'} shadow-xl`}>
-              <figure><img src={approvedclass.image} alt="Shoes" /></figure>
+              <figure><img className='h-72' src={approvedclass.image} alt="Shoes" /></figure>
               <div className="card-body">
                 <h2 className="card-title">Class Name: {approvedclass.className}</h2>
                 <p>Instructor Name: {approvedclass.instructorName}</p>

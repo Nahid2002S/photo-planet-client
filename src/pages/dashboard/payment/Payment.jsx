@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Checkoutform from './Checkoutform';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../../authProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
@@ -20,6 +21,8 @@ const Payment = () => {
             setPayClass(data)
         })
     },[])
+
+    useTitle('Payment')
   
     return (
         <div className='w-2/3 mx-auto px-16'>

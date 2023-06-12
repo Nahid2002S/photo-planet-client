@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../authProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const EnrollClasses = () => {
     const {user} = useContext(AuthContext)
@@ -12,6 +13,8 @@ const EnrollClasses = () => {
             setEnrollClasses(data)
         })
     },[])
+
+    useTitle('Enrolled Classes')
 
     return (
         <div className='w-full'>

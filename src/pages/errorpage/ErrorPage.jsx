@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const ErrorPage = () => {
+
+    useTitle('Not Found')
+
     return (
         <div>
             <div className='flex justify-center items-center h-[100vh]'>

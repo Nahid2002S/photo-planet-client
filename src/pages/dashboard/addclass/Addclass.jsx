@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../authProvider/AuthProvider';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useTitle from '../../../hooks/useTitle';
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 const Addclass = () => {

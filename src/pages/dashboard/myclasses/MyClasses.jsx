@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../authProvider/AuthProvider';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../hooks/useTitle';
 
 const MyClasses = () => {
     const {user} = useContext(AuthContext);
@@ -19,6 +20,8 @@ const MyClasses = () => {
     const handleSeeFeedback = feedback =>{
       setShowFeedback(feedback)
     }
+
+    useTitle('My Classes')
 
     return (
         <div>

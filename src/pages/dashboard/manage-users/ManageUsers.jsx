@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useTitle from '../../../hooks/useTitle';
 
 const ManageUsers = () => {
 
@@ -50,6 +51,8 @@ const ManageUsers = () => {
             }
         })
     }
+
+    useTitle('Manage Users')
 
     const handleMakeInstructor = user =>{
         fetch(`https://assignment-12-server-bice.vercel.app/users/instructor/${user._id}`, {

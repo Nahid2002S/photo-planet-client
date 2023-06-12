@@ -8,8 +8,12 @@ import img3 from '../assets/cam-3.png'
 import PopularClasses from '../popularClass/PopularClass';
 import PopularInstructors from '../popularInstructors/PopularInstructors';
 import StudentCaptured from '../studentCaptured/StudentCaptured';
+import useTitle from '../hooks/useTitle';
 
 const Banner = () => {
+
+    useTitle('Home')
+
     return (
         <div className='dark:bg-zinc-800'>
             <Carousel className='text-center'>

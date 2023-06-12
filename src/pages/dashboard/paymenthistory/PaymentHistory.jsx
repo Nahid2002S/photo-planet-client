@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../authProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const PaymentHistory = () => {
     const {user} = useContext(AuthContext)
@@ -13,6 +14,8 @@ const PaymentHistory = () => {
             console.log(data)
         })
     },[])
+
+    useTitle('Payment History')
 
     return (
         <div className='w-[90%]'>

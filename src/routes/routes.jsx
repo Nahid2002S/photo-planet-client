@@ -8,16 +8,16 @@ import ManageUsers from "../pages/dashboard/manage-users/ManageUsers";
 import Addclass from "../pages/dashboard/addclass/Addclass";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
-import Instructors from "../pages/instructors/instructors";
 import MyClasses from "../pages/dashboard/myclasses/MyClasses";
 import ManageClasses from "../pages/dashboard/manageclasses/ManageClasses";
 import AllClasses from "../pages/allclasses/AllClasses";
 import SelectedClass from "../pages/dashboard/selectedclass/SelectedClass";
-import Payment from "../pages/dashboard/payment/payment";
 import ErrorPage from "../pages/errorpage/ErrorPage";
 import EnrollClasses from "../pages/dashboard/enrollClasses/EnrollClasses";
 import PaymentHistory from "../pages/dashboard/paymenthistory/PaymentHistory";
 import UpdateMyClass from "../pages/dashboard/updateMyClass/UpdateMyClass";
+import Instructors from "../pages/instructors/Instructors";
+import Payment from "../pages/dashboard/payment/Payment";
 
 const router = createBrowserRouter([
     {

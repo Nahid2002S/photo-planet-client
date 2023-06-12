@@ -5,6 +5,7 @@ import { AuthContext } from '../../authProvider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash  } from 'react-icons/fa';
 import { useState } from 'react';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
     const {loginUser, googleAuth} = useContext(AuthContext);
@@ -54,6 +55,8 @@ const Login = () => {
                         })
                       }
 
+                      useTitle('Login')
+
     return (
         <div className='px-2 text-black mb-4'>
         <div className='px-8 py-6 bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 lg:w-[55%] mx-auto mt-6 rounded-md'>
@@ -65,12 +68,12 @@ const Login = () => {
         <div className='md:w-[50%]'>
         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
             <label htmlFor="" className='text-xl font-semibold text-black'>Email: <br />
-            <input {...register("email", { required: true })} type="email" name="email" id="email" className='px-4 py-2 rounded-md w-full' required/>
+            <input {...register("email", { required: true })} type="email" name="email" id="email" className='px-4 py-2 rounded-md w-full border-0 outline-none' required/>
             </label>
             <label htmlFor="" className='text-xl font-semibold text-black'>Password: <br />
-            <div className='flex items-center bg-[#E8F0FE] w-full rounded-md'>
+            <div className='flex items-center bg-white w-full rounded-md'>
             <div>
-            <input {...register("password", { required: true })} type={seeLoginPass ? 'text' : 'password'} name="password" id="password" className='px-4 py-2 rounded-md w-full bg-white' required />
+            <input {...register("password", { required: true })} type={seeLoginPass ? 'text' : 'password'} name="password" id="password" className='px-4 py-2 rounded-md w-full bg-white border-0 outline-none' required />
             </div>
             <div>
             <div className='-ml-2'>{ seeLoginPass ? <FaEyeSlash onClick={handleSeePass} className='cursor-pointer'></FaEyeSlash> : <FaEye onClick={handleSeePass} className='cursor-pointer'></FaEye>}</div>

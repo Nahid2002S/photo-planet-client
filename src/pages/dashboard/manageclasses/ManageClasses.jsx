@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../../hooks/useTitle';
 
 const ManageClasses = () => {
 
@@ -58,6 +59,8 @@ const ManageClasses = () => {
         }) 
     }
 
+    useTitle('Manage Classes')
+
 
     return (
         <div>
@@ -78,7 +81,7 @@ const ManageClasses = () => {
             {
               allClasses.map(singleclass => <div key={singleclass._id}>
                 <div className="card w-96 bg-base-100 shadow-xl">
-              <figure><img src={singleclass.image} alt="Shoes" /></figure>
+              <figure><img className='h-72' src={singleclass.image} alt="Shoes" /></figure>
               <div className="card-body">
                 <h2 className="card-title">Class Name: {singleclass.className}</h2>
                 <p>Instructor Name: {singleclass.instructorName}</p>
