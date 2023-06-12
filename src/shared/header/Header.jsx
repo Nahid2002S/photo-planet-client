@@ -54,7 +54,7 @@ const Header = () => {
       }
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl -ml-8">Photo Galaxy</a>
+    <a className="btn btn-ghost normal-case text-xl -ml-8 lg:ml-0">Photo Planet</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">

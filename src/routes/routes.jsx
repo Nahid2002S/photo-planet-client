@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../layouts/Layout";
-import Home from "../pages/home/Home";
 import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
 import Banner from "../banner/Banner";
@@ -12,7 +11,6 @@ import AdminRoute from "./AdminRoute";
 import Instructors from "../pages/instructors/instructors";
 import MyClasses from "../pages/dashboard/myclasses/MyClasses";
 import ManageClasses from "../pages/dashboard/manageclasses/ManageClasses";
-import Feedback from "../pages/dashboard/feedback/feedback";
 import AllClasses from "../pages/allclasses/AllClasses";
 import SelectedClass from "../pages/dashboard/selectedclass/SelectedClass";
 import Payment from "../pages/dashboard/payment/payment";
