@@ -6,7 +6,7 @@ const EnrollClasses = () => {
     const [enrollClasses, setEnrollClasses] = useState([]);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/payments/${user?.email}`)
+        fetch(`https://assignment-12-server-bice.vercel.app/payments/${user?.email}`)
         .then(res => res.json())
         .then(data => {
             setEnrollClasses(data)

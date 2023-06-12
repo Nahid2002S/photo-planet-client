@@ -8,7 +8,7 @@ const MyClasses = () => {
 
     const [showFeedback, setShowFeedback] = useState('')
     useEffect(()=>{
-        fetch(`http://localhost:5000/classes/${user?.email}`)
+        fetch(`https://assignment-12-server-bice.vercel.app/classes/${user?.email}`)
         .then(res => res.json())
         .then(data=>{
             console.log(data)

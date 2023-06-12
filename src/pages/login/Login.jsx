@@ -37,7 +37,7 @@ const Login = () => {
             console.log(loggedUser.photoURL)
             const saveUser = {name: loggedUser.displayName, email : loggedUser.email, photo: loggedUser.photoURL}
 
-                        fetch('http://localhost:5000/users',{
+                        fetch('https://assignment-12-server-bice.vercel.app/users',{
                             method: 'POST',
                             headers: {
                                 'content-type' : 'application/json'

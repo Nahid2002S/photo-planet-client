@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 const PopularClasses = () => {
     const [popularClasses, setPopularClasses] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/classes/popular')
+        fetch('https://assignment-12-server-bice.vercel.app/classes/popular')
         .then(res => res.json())
         .then(data => {
             console.log(data)

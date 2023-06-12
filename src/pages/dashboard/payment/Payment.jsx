@@ -14,7 +14,7 @@ const Payment = () => {
     const [payClass, setPayClass] = useState(0)
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/selected/${user?.email}/${id}`)
+        fetch(`https://assignment-12-server-bice.vercel.app/selected/${user?.email}/${id}`)
         .then(res => res.json())
         .then(data => {
             setPayClass(data)

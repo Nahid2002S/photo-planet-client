@@ -6,7 +6,7 @@ const topInstructors = () => {
 
     const [topInstructors, setTopInstructors] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/users/top/instructors')
+        fetch('https://assignment-12-server-bice.vercel.app/users/top/instructors')
         .then(res => res.json())
         .then(data => {
             setTopInstructors(data)

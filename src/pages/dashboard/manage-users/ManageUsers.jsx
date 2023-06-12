@@ -14,7 +14,7 @@ const ManageUsers = () => {
     })
 
     const handleMakeAdmin = user =>{
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://assignment-12-server-bice.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -33,7 +33,7 @@ const ManageUsers = () => {
     }
 
     const handleDelete = id =>{
-        fetch(`http://localhost:5000/users/${id}`,{
+        fetch(`https://assignment-12-server-bice.vercel.app/users/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())
@@ -52,7 +52,7 @@ const ManageUsers = () => {
     }
 
     const handleMakeInstructor = user =>{
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        fetch(`https://assignment-12-server-bice.vercel.app/users/instructor/${user._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())

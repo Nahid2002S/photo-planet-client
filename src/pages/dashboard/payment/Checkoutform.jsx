@@ -94,7 +94,7 @@ const Checkoutform = ({price, payClass}) => {
             .then(res =>{
               if(res.data.insertedId){
                 
-                fetch(`http://localhost:5000/selected/${payClass._id}`, {
+                fetch(`https://assignment-12-server-bice.vercel.app/selected/${payClass._id}`, {
                   method: 'DELETE'
                 })
                 .then(res => res.json())

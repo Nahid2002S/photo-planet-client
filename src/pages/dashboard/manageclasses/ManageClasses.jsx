@@ -8,7 +8,7 @@ const ManageClasses = () => {
     const [newId, setNewId] = useState('');
 
     useEffect(()=>{
-        fetch('http://localhost:5000/classes')
+        fetch('https://assignment-12-server-bice.vercel.app/classes')
         .then(res => res.json())
         .then(data=>{
             setAllClasses(data)
@@ -16,7 +16,7 @@ const ManageClasses = () => {
     },[allClasses])
 
     const handleApproved = id =>{
-        fetch(`http://localhost:5000/classes/approve/${id}`, {
+        fetch(`https://assignment-12-server-bice.vercel.app/classes/approve/${id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -26,7 +26,7 @@ const ManageClasses = () => {
     }
 
     const handleDeny = id =>{
-        fetch(`http://localhost:5000/classes/deny/${id}`, {
+        fetch(`https://assignment-12-server-bice.vercel.app/classes/deny/${id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -45,7 +45,7 @@ const ManageClasses = () => {
     }
 
     const handleSend = () =>{
-        fetch(`http://localhost:5000/classes/feedback/${newId}`,{
+        fetch(`https://assignment-12-server-bice.vercel.app/classes/feedback/${newId}`,{
             method : 'PUT',
             headers: {
                 'content-type' : 'application/json',

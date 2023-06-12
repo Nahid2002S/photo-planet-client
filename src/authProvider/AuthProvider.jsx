@@ -31,7 +31,7 @@ const AuthProvider = ({children}) => {
             setUser(loginUser);
 
             if(loginUser){
-                axios.post('http://localhost:5000/jwt', {
+                axios.post('https://assignment-12-server-bice.vercel.app/jwt', {
                     email : loginUser.email
                 })
                 .then(data =>{

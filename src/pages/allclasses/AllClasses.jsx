@@ -9,7 +9,7 @@ const AllClasses = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        fetch('http://localhost:5000/classes/approve')
+        fetch('https://assignment-12-server-bice.vercel.app/classes/approve')
         .then(res=> res.json())
         .then(data =>{
             setApprovedClasses(data)
@@ -38,7 +38,7 @@ const AllClasses = () => {
 
       const {_id, className, email, image, instructorName, price, seats, student} = classes;
 
-      fetch('http://localhost:5000/selected', {
+      fetch('https://assignment-12-server-bice.vercel.app/selected', {
         method: 'POST',
         headers: {
           'content-type' : 'application/json'

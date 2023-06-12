@@ -8,7 +8,7 @@ const SelectedClass = () => {
     const [selectedClasses, setSelectedClasses] = useState([])
 
     useEffect(()=>{
-      fetch(`http://localhost:5000/selected/${user?.email}`)
+      fetch(`https://assignment-12-server-bice.vercel.app/selected/${user?.email}`)
       .then(res => res.json())
       .then(data =>{
         setSelectedClasses(data)
@@ -26,7 +26,7 @@ const SelectedClass = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/selected/${id}`, {
+                fetch(`https://assignment-12-server-bice.vercel.app/selected/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())

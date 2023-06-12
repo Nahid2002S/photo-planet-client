@@ -10,7 +10,7 @@ const UpdateMyClass = () => {
     const [updateClass, setUpdateClass] = useState([])
   
     useEffect(()=>{
-        fetch(`http://localhost:5000/classes/${user?.email}/${selectedClass.id}`)
+        fetch(`https://assignment-12-server-bice.vercel.app/classes/${user?.email}/${selectedClass.id}`)
         .then(res => res.json())
         .then(data=>{
             setUpdateClass(data)
@@ -28,7 +28,7 @@ const UpdateMyClass = () => {
 
         const updatedData = {name, seats, price}
 
-       fetch(`http://localhost:5000/classes/${user?.email}/${selectedClass.id}`,{
+       fetch(`https://assignment-12-server-bice.vercel.app/classes/${user?.email}/${selectedClass.id}`,{
         method: 'PUT',
         headers: {
            'content-type' : 'application/json'
