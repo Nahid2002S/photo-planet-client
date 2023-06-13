@@ -18,6 +18,9 @@ import PaymentHistory from "../pages/dashboard/paymenthistory/PaymentHistory";
 import UpdateMyClass from "../pages/dashboard/updateMyClass/UpdateMyClass";
 import Instructors from "../pages/instructors/Instructors";
 import Payment from "../pages/dashboard/payment/Payment";
+import InstructorRoute from "./InstructorRoute";
+import StudentsRoute from "./StudentsRoute";
+import DashboardHome from "../pages/dashboard/dashboardHome/DashboardHome";
 
 const router = createBrowserRouter([
     {
@@ -44,7 +47,7 @@ const router = createBrowserRouter([
         {
           path: 'classes',
           element: <AllClasses></AllClasses>
-        }
+        },
       ]
     },
     {
@@ -53,20 +56,24 @@ const router = createBrowserRouter([
       errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
+          path: 'dashboardhome',
+          element: <DashboardHome></DashboardHome>
+        },
+        {
           path: 'manageusers',
           element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
         },
         {
           path: 'addclass',
-          element: <Addclass></Addclass>
+          element: <InstructorRoute><Addclass></Addclass></InstructorRoute>
         },
         {
           path: 'myclasses',
-          element: <MyClasses></MyClasses>
+          element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
         },
         {
           path: 'myclasses/update/:id',
-          element: <UpdateMyClass></UpdateMyClass>
+          element: <InstructorRoute><UpdateMyClass></UpdateMyClass></InstructorRoute>
         },
         {
           path: 'manageclasses',
@@ -74,19 +81,19 @@ const router = createBrowserRouter([
         },
         {
           path: 'selectedclass',
-          element: <SelectedClass></SelectedClass>
+          element: <StudentsRoute><SelectedClass></SelectedClass></StudentsRoute>
         },
         {
           path: 'payment/:id',
-          element: <Payment></Payment>
+          element: <StudentsRoute><Payment></Payment></StudentsRoute>
         },
         {
           path: 'enrollclasses',
-          element: <EnrollClasses></EnrollClasses>
+          element: <StudentsRoute><EnrollClasses></EnrollClasses></StudentsRoute>
         },
         {
           path: 'paymenthistory',
-          element: <PaymentHistory></PaymentHistory>
+          element: <StudentsRoute><PaymentHistory></PaymentHistory></StudentsRoute>
         }
       ]
     }

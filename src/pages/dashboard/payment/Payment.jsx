@@ -25,7 +25,7 @@ const Payment = () => {
     useTitle('Payment')
   
     return (
-        <div className='w-2/3 mx-auto px-16'>
+        <div className='w-2/3 mx-auto px-16 py-4 bg-violet-400 rounded-md'>
             <h1 className='text-3xl text-center mb-12 font-semibold my-4'>PAYMENT:</h1>
             <h3 className='text-xl font-semibold text-red-600 my-6'>Price: {payClass.price}</h3>
             <Elements stripe={stripePromise}>

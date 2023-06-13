@@ -53,7 +53,7 @@ const Addclass = () => {
     return (
         <div className='px-12 my-4 w-full'>
             <h1 className='text-4xl font-extrabold text-center mb-6'>Add A Class</h1>
-            <form onSubmit={handleAddClass} className='bg-gradient-to-r from-indigo-600 to-sky-950 text-white py-12 rounded-md'>
+            <form onSubmit={handleAddClass} className='bg-gradient-to-r from-violet-400 to-violet-500 text-white py-12 rounded-md'>
                 <div className='flex justify-center gap-16'>
                 <div className='w-[40%]'>
                     <label>

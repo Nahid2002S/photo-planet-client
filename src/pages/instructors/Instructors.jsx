@@ -19,9 +19,9 @@ const Instructors = () => {
     return (
 
 
-        <div className="overflow-x-auto px-12 mt-16">
+        <div className="overflow-x-auto px-12 mt-20">
   <table className="table w-2/3 mx-auto">
-    <thead>
+    <thead className='bg-indigo-400 text-white'>
       <tr>
         <th>#</th>
         <th>Photo</th>

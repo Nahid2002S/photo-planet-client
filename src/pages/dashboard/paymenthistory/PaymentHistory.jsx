@@ -21,7 +21,7 @@ const PaymentHistory = () => {
         <div className='w-[90%]'>
             <h1 className='text-3xl font-semibold my-4'>Payment History: {paymentClasses.length}</h1>
             <table className="table">
-        <thead>
+        <thead className='bg-indigo-400 text-white'>
           <tr>
             <th>#</th>
             <th>Photo</th>

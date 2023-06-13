@@ -1,12 +1,13 @@
 import React from 'react';
+import logo from '../../assets/logo.png'
 
 const Footer = () => {
     return (
         <div className='bg-gradient-to-r from-violet-300 to-violet-400 px-4 lg:px-10 py-6'>
     <footer className="footer p-1">
   <div>
-    <img src='' className='w-[10rem]' alt="" />
-    <p><span className='text-2xl font-extrabold'>PHOTO GALAXY</span><br/>A Complete Mentors Of You Photography Journey.</p>
+    <img src={logo} className='w-[8rem]' alt="" />
+    <p><span className='text-2xl font-extrabold'>PHOTO PLANET</span><br/>A Complete Mentors Of You Photography Journey.</p>
   </div>  
   <div>
   <div className='mb-4'>
@@ -35,7 +36,7 @@ const Footer = () => {
   </div>
 </footer>
 <div className='text-center font-semibold mt-4'>
-    <p>Copyright © 2023 - All right reserved by PHOTO GALAXY</p>
+    <p>Copyright © 2023 - All right reserved by PHOTO PLANET</p>
   </div>
         </div>
     );

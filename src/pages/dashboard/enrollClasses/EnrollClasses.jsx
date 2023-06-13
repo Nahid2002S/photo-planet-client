@@ -20,7 +20,7 @@ const EnrollClasses = () => {
         <div className='w-full'>
             <h1 className='text-3xl font-semibold w-2/3 mx-auto my-4'>Enrolled Classes: {enrollClasses.length}</h1>
             <table className="table w-2/3 mx-auto">
-        <thead>
+        <thead className='bg-indigo-400'>
           <tr>
             <th>#</th>
             <th>Photo</th>

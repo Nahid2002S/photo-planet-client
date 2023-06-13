@@ -38,11 +38,11 @@ const MyClasses = () => {
 </div>
 
             <h1 className='text-3xl font-semibold my-4'>My Classes: {classes.length}</h1>
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid grid-cols-2 gap-4 my-2'>
             {
               classes.map(cls => <div key={cls._id}>
-                <div className="card w-96 bg-base-100 shadow-xl">
-              <figure><img src={cls.image} alt="Shoes" /></figure>
+                <div className="card w-96 bg-violet-200 shadow-xl">
+              <figure><img className='h-72' src={cls.image} alt="Shoes" /></figure>
               <div className="card-body">
                 <h2 className="card-title">Class Name: {cls.className}</h2>
                 <p>Instructor Name: {cls.instructorName}</p>

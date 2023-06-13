@@ -13,7 +13,10 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
+    const [error, setError] = useState("");
+
     const [seeLoginPass, setSeeLoginPass] = useState(false);
+
     const handleSeePass = () =>{
         setSeeLoginPass(!seeLoginPass)
     }
@@ -27,7 +30,7 @@ const Login = () => {
             navigate(from, {replace : true})
         })
         .catch(err =>{
-            console.log(err)
+            setError(err.message)
         })
     }
 
@@ -51,7 +54,7 @@ const Login = () => {
                         })
                      })
                         .catch(err =>{
-                             console.log(err)
+                            setError(err.message)
                         })
                       }
 
@@ -59,7 +62,7 @@ const Login = () => {
 
     return (
         <div className='px-2 text-black mb-4'>
-        <div className='px-8 py-6 bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 lg:w-[55%] mx-auto mt-6 rounded-md'>
+        <div className='px-8 py-6 bg-gradient-to-r from-violet-500 to-purple-700 lg:w-[55%] mx-auto mt-6 rounded-md'>
         <h3 className='text-center text-black text-3xl font-semibold mb-6 '>Please <span className='text-indigo-200'>Login!!!</span></h3>
         <div className='md:flex items-center gap-4'>
             <div className='md:w-[60%]'>
@@ -80,7 +83,7 @@ const Login = () => {
             </div>
             </div>
             </label>
-            <p className='font-semibold text-red-200'></p>
+            <p className='font-semibold text-red-200'>{error}</p>
             <button className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r from-violet-300 to-violet-400 shadow:md">Login</button>
             <hr />
             <Link onClick={handleGoogleLogin} className="btn btn-outline btn-primary">Login With Google</Link>

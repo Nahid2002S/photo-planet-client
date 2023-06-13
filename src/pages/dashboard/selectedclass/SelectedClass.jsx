@@ -50,7 +50,7 @@ const SelectedClass = () => {
             <div className='grid grid-cols-2 mb-4 gap-4'>
             {
               selectedClasses.map(selectedClass => <div key={selectedClass._id} className='mx-auto'>
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card w-96 bg-violet-200 shadow-xl">
               <figure><img src={selectedClass.image} alt="Shoes" /></figure>
               <div className="card-body">
                 <h2 className="card-title">Class Name: {selectedClass.className}</h2>

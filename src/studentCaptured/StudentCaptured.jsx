@@ -4,9 +4,9 @@ import Marquee from 'react-fast-marquee';
 const StudentCaptured = () => {
     return (
         <div className='pb-6'>
-            <h1 className='text-center font-semibold text-3xl my-8 uppercase'>Photo Captured By Our Students</h1>
+            <h1 className='text-center font-bold text-3xl my-8 uppercase text-violet-400'>Photo Captured By Our Students</h1>
             <Marquee>
-            <div className="card w-96">
+            <div id='capture' className="card w-96">
   <figure><img src="https://img.freepik.com/free-photo/side-view-woman-posing-outdoors_23-2149726430.jpg?w=360&t=st=1686516914~exp=1686517514~hmac=c183ad596fdd50731e0b5389a0330b3c964b0f9bf1723b68c77354ba3531a8fb" alt="Shoes" /></figure>
 </div>
             <div className="card w-96">

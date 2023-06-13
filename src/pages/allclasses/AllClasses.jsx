@@ -3,6 +3,8 @@ import { AuthContext } from '../../authProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useTitle from '../../hooks/useTitle';
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 
 const AllClasses = () => {
 
@@ -14,6 +16,7 @@ const AllClasses = () => {
         .then(res=> res.json())
         .then(data =>{
             setApprovedClasses(data)
+            console.log(data)
         })
     },[])
 
@@ -53,6 +56,8 @@ const AllClasses = () => {
     }
 
     useTitle('Classes')
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor()
 
     return (
         <div className='mt-16'>
@@ -60,7 +65,7 @@ const AllClasses = () => {
             <div className='grid grid-cols-3 mb-4'>
             {
               approvedClasses.map(approvedclass => <div key={approvedclass._id} className='mx-auto'>
-                <div className={`card w-96 ${approvedclass.seats == 0 ? 'bg-red-400' : 'bg-base-100'} shadow-xl`}>
+                <div className={`card w-96 ${approvedclass.seats == 0 ? 'bg-red-400' : 'bg-violet-200'} shadow-xl`}>
               <figure><img className='h-72' src={approvedclass.image} alt="Shoes" /></figure>
               <div className="card-body">
                 <h2 className="card-title">Class Name: {approvedclass.className}</h2>
@@ -68,7 +73,7 @@ const AllClasses = () => {
                 <p>Instructor Email: {approvedclass.email}</p>
                 <p>Price: {approvedclass.price}</p>
                 <p>Available Seats: {approvedclass.seats}</p>
-                <button onClick={()=> handleSelected(approvedclass)} disabled={approvedclass.seats === 'admin' || approvedclass.seats === 'instructor' || approvedclass.seats == 0} className="bg-gradient-to-r from-violet-300 to-violet-400 px-4 py-2 rounded-md text-black font-semibold">Select</button>
+                <button onClick={()=> handleSelected(approvedclass)} disabled={isAdmin || isInstructor || approvedclass.seats == 0} className="bg-gradient-to-r from-violet-300 to-violet-400 px-4 py-2 rounded-md text-black font-semibold">Select</button>
                 </div>
               </div>
             </div>)

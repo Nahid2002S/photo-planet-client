@@ -8,4 +8,12 @@
 * Instructor Can Add Class And Manage Her Added Class.
 * Student Can Select A Class, Enroll Class By Paying, And See Her Payments History
 
+#Technology:
+
+* React JS
+* Express JS
+* MongoDb
+* Tailwind
+
 ## Live Site Link :
+https://assignment-12-auth-ca106.web.app/
