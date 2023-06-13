@@ -61,7 +61,7 @@ const Login = () => {
                       useTitle('Login')
 
     return (
-        <div className='px-2 text-black mb-4'>
+        <div className='px-2 text-black mb-4 mt-20'>
         <div className='px-8 py-6 bg-gradient-to-r from-violet-500 to-purple-700 lg:w-[55%] mx-auto mt-6 rounded-md'>
         <h3 className='text-center text-black text-3xl font-semibold mb-6 '>Please <span className='text-indigo-200'>Login!!!</span></h3>
         <div className='md:flex items-center gap-4'>
@@ -86,7 +86,7 @@ const Login = () => {
             <p className='font-semibold text-red-200'>{error}</p>
             <button className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r from-violet-300 to-violet-400 shadow:md">Login</button>
             <hr />
-            <Link onClick={handleGoogleLogin} className="btn btn-outline btn-primary">Login With Google</Link>
+            <Link onClick={handleGoogleLogin} className="btn btn-outline bg-gradient-to-r from-violet-300 to-violet-400">Login With Google</Link>
             <p>New User? Create Account <Link to='/register' className='text-blue-200 underline font-semibold'>Register</Link></p>
         </form>
         </div>

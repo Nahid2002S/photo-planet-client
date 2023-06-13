@@ -25,7 +25,8 @@ const PopularClasses = () => {
                       <p>Instructor Name: {popular.instructorName}</p>
                       <p>Instructor Email: {popular.email}</p>
                       <p>Seats: {popular.seats}</p>
-                      <p>Instructor Email: {popular.price}</p>
+                      <p>Price: {popular.price}</p>
+                      <p>Student: {popular.student}</p>
                     </div>
                   </div>
                     </div>)

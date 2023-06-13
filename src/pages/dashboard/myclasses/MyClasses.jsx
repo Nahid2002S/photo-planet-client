@@ -28,7 +28,7 @@ const MyClasses = () => {
 
 <input type="checkbox" id="my_modal_7" className="modal-toggle" />
 <div className="modal">
-  <div className="modal-box">
+  <div className="modal-box bg-gradient-to-r from-violet-500 to-purple-700 text-white">
     <h3 className="text-3xl font-bold mb-3">Admin Feedback:</h3>
     <p>{showFeedback}</p>
     <div className="modal-action">
@@ -42,7 +42,7 @@ const MyClasses = () => {
             {
               classes.map(cls => <div key={cls._id}>
                 <div className="card w-96 bg-violet-200 shadow-xl">
-              <figure><img className='h-72' src={cls.image} alt="Shoes" /></figure>
+              <figure><img className='h-64' src={cls.image} alt="Shoes" /></figure>
               <div className="card-body">
                 <h2 className="card-title">Class Name: {cls.className}</h2>
                 <p>Instructor Name: {cls.instructorName}</p>

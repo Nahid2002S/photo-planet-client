@@ -10,6 +10,7 @@ const EnrollClasses = () => {
         fetch(`https://assignment-12-server-bice.vercel.app/payments/${user?.email}`)
         .then(res => res.json())
         .then(data => {
+          console.log(data)
             setEnrollClasses(data)
         })
     },[])
@@ -24,8 +25,9 @@ const EnrollClasses = () => {
           <tr>
             <th>#</th>
             <th>Photo</th>
-            <th>Name</th>
-            <th>Email</th>
+            <th>Class Name</th>
+            <th>Instructors Name</th>
+            <th>Instructors Email</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -42,8 +44,9 @@ const EnrollClasses = () => {
                     </div>
                   </div>
                 </td>
+                <td>{enrollclass.className}</td>
                 <td>{enrollclass.instructorName}</td>
-                <td>{enrollclass.email}</td>
+                <td>{enrollclass.instructorEmail}</td>
                 <td><button className='bg-gradient-to-r from-violet-300 to-violet-400 px-4 py-2 rounded-md text-black font-semibold'>View</button></td>
               </tr>)
          }

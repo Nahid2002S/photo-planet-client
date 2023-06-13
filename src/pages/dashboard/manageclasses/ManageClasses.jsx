@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useTitle from '../../../hooks/useTitle';
+import Swal from 'sweetalert2';
 
 const ManageClasses = () => {
 
@@ -56,6 +57,15 @@ const ManageClasses = () => {
         .then(res => res.json())
         .then(data =>{
             console.log(data)
+            if(data.modifiedCount){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Feedback Send Successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
         }) 
     }
 
@@ -66,9 +76,9 @@ const ManageClasses = () => {
         <div>
             <input type="checkbox" id="my_modal_6" className="modal-toggle" />
           <div className="modal">
-          <div className="modal-box">
+          <div className="modal-box bg-gradient-to-r from-violet-500 to-purple-700 text-white">
             <h3 className="font-bold text-lg mb-4">Send Feedback!</h3>
-            <textarea onChange={(event)=> handleFeedback(event)} placeholder="Write Feedback" className="textarea textarea-bordered w-[29rem] h-[6rem]" ></textarea>
+            <textarea onChange={(event)=> handleFeedback(event)} placeholder="Write Feedback" className="textarea textarea-bordered w-[29rem] h-[6rem] text-black" ></textarea>
             <button onClick={handleSend} className='my-2 btn bg-gradient-to-r from-violet-300 to-violet-400 px-4 py-2 rounded-md text-black font-semibold'>Send</button>
            <div className="modal-action">
           <label htmlFor="my_modal_6" className="btn">Close!</label>
@@ -81,7 +91,7 @@ const ManageClasses = () => {
             {
               allClasses.map(singleclass => <div key={singleclass._id}>
                 <div className="card w-96 bg-base-100 shadow-xl">
-              <figure><img className='h-72' src={singleclass.image} alt="Shoes" /></figure>
+              <figure><img className='h-64' src={singleclass.image} alt="Shoes" /></figure>
               <div className="card-body">
                 <h2 className="card-title">Class Name: {singleclass.className}</h2>
                 <p>Instructor Name: {singleclass.instructorName}</p>

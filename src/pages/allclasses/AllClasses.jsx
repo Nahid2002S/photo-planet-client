@@ -16,11 +16,21 @@ const AllClasses = () => {
         .then(res=> res.json())
         .then(data =>{
             setApprovedClasses(data)
-            console.log(data)
         })
     },[])
 
     const {user} = useContext(AuthContext)
+
+    const [currentUser, setCurrentUser] = useState([]);
+
+    useEffect(()=>{
+      fetch(`https://assignment-12-server-bice.vercel.app/approvedclass/${user?.email}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setCurrentUser(data)
+      })
+    },[user])
 
     const handleSelected = classes =>{
 
@@ -51,20 +61,28 @@ const AllClasses = () => {
       })
       .then(res => res.json())
       .then(data =>{
-        console.log(data)
+        if(data.insertedId){
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Class Successfully Selected',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
       })
     }
 
+    console.log(currentUser.role)
+
     useTitle('Classes')
-    const [isAdmin] = useAdmin();
-    const [isInstructor] = useInstructor()
 
     return (
         <div className='mt-16'>
             <h1 className='text-3xl font-semibold my-4'>All Classes: {approvedClasses.length}</h1>
             <div className='grid grid-cols-3 mb-4'>
             {
-              approvedClasses.map(approvedclass => <div key={approvedclass._id} className='mx-auto'>
+              approvedClasses.map(approvedclass => <div key={approvedclass._id} className='mx-auto mb-3'>
                 <div className={`card w-96 ${approvedclass.seats == 0 ? 'bg-red-400' : 'bg-violet-200'} shadow-xl`}>
               <figure><img className='h-72' src={approvedclass.image} alt="Shoes" /></figure>
               <div className="card-body">
@@ -73,7 +91,7 @@ const AllClasses = () => {
                 <p>Instructor Email: {approvedclass.email}</p>
                 <p>Price: {approvedclass.price}</p>
                 <p>Available Seats: {approvedclass.seats}</p>
-                <button onClick={()=> handleSelected(approvedclass)} disabled={isAdmin || isInstructor || approvedclass.seats == 0} className="bg-gradient-to-r from-violet-300 to-violet-400 px-4 py-2 rounded-md text-black font-semibold">Select</button>
+                <button onClick={()=> handleSelected(approvedclass)} disabled={currentUser?.role === 'admin' || currentUser?.role === 'instructor' || approvedclass.seats == 0} className="bg-gradient-to-r from-violet-300 to-violet-400 px-4 py-2 rounded-md text-black font-semibold">Select</button>
                 </div>
               </div>
             </div>)

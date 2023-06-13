@@ -76,9 +76,9 @@ const Register = () => {
     useTitle('Register')
 
     return (
-        <div className='px-2 text-black mb-4'>
+        <div className='px-2 text-black mb-4 mt-20'>
         <div className='px-8 py-6 bg-gradient-to-r from-violet-500 to-purple-700 lg:w-[60%] mx-auto mt-6 rounded-md shadow-xl'>
-        <h3 className='text-center text-3xl font-semibold mb-6'>Please <span className='text-green-700'>Register!!!</span></h3>
+        <h3 className='text-center text-3xl font-semibold mb-6'>Please <span className='text-indigo-200'>Register!!!</span></h3>
         <div className='md:flex items-center gap-4'>
         <div className='lg:w-[70%]'>
             <img src={loginImage} alt="" />

@@ -15,8 +15,8 @@ const topInstructors = () => {
     },[])
 
     return (
-        <div className='px-2'>
-            <h1 className='text-center font-bold text-3xl my-8 text-violet-400'>Top Instructors</h1>
+        <div className='px-2 pb-16'>
+            <h1 className='text-center font-bold text-3xl my-8 text-violet-400'>Popular Instructors</h1>
             <div className='grid lg:grid-cols-3 grid-cols-1 lg:gap-4 gap-3'>
                 {
                     topInstructors.map(topInstructor => <motion.div

@@ -9,7 +9,6 @@ const Instructors = () => {
 
     const {data : instructors = [], refetch} = useQuery(['instructors'], async() => {
         const res = await axiosSecure.get('/users/instructors')
-        console.log(res.data)
         return res.data;
     })
 
