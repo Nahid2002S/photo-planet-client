@@ -12,7 +12,7 @@ import useTitle from '../../hooks/useTitle';
 const Register = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { registerUser, updateUser } = useContext(AuthContext);
+    const { registerUser, updateUser, googleAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [passerror, setPasserror] = useState(false);
@@ -73,6 +73,28 @@ const Register = () => {
             })
     };
 
+    const handleGoogleLogin =() =>{
+        googleAuth()
+        .then(result =>{
+            const loggedUser = result.user;
+            const saveUser = {name: loggedUser.displayName, email : loggedUser.email, photo: loggedUser.photoURL}
+                        fetch('https://assignment-12-server-bice.vercel.app/users',{
+                            method: 'POST',
+                            headers: {
+                                'content-type' : 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                        .then(res => res.json())
+                        .then(() => {
+                        navigate('/');
+                        })
+                     })
+                        .catch(err =>{
+                            setError(err.message)
+                        })
+                      }
+
     useTitle('Register')
 
     return (
@@ -122,6 +144,8 @@ const Register = () => {
             </label>
             {passerror ? <p className='text-red-500 font-semibold'>Password Not Matched</p> : ''}
             <button className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r from-violet-300 to-violet-400 shadow:md">Register </button>
+            <hr />
+            <Link onClick={handleGoogleLogin} className="btn btn-outline bg-gradient-to-r from-violet-300 to-violet-400">Login With Google</Link>
             <p>Already have an account? <Link to='/login' className='text-blue-200 underline font-semibold'>Login</Link></p>
         </form>
         </div>

@@ -34,11 +34,10 @@ const Login = () => {
         })
     }
 
-    const handleGoogleLogin =() =>{
+    const handleGoogleRegister =() =>{
         googleAuth()
         .then(result =>{
             const loggedUser = result.user;
-            console.log(loggedUser.photoURL)
             const saveUser = {name: loggedUser.displayName, email : loggedUser.email, photo: loggedUser.photoURL}
 
                         fetch('https://assignment-12-server-bice.vercel.app/users',{
@@ -86,7 +85,7 @@ const Login = () => {
             <p className='font-semibold text-red-200'>{error}</p>
             <button className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r from-violet-300 to-violet-400 shadow:md">Login</button>
             <hr />
-            <Link onClick={handleGoogleLogin} className="btn btn-outline bg-gradient-to-r from-violet-300 to-violet-400">Login With Google</Link>
+            <Link onClick={handleGoogleRegister} className="btn btn-outline bg-gradient-to-r from-violet-300 to-violet-400">Login With Google</Link>
             <p>New User? Create Account <Link to='/register' className='text-blue-200 underline font-semibold'>Register</Link></p>
         </form>
         </div>
