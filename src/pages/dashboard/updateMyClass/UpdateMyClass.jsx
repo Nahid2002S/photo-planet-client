@@ -50,7 +50,7 @@ const UpdateMyClass = () => {
     }
 
     return (
-        <div className='px-12 my-4 bg-gradient-to-r from-indigo-600 to-sky-950 text-white py-12 rounded-md w-2/3'>
+        <div className='px-12 my-4 bg-gradient-to-r from-violet-400 to-violet-500 text-white py-12 rounded-md w-2/3'>
         <h1 className='text-4xl font-extrabold text-center mb-6'>Update: {updateClass.className}</h1>
         <form onSubmit={handleUpdateClass}>
             <div>
