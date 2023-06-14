@@ -27,7 +27,7 @@ const topInstructors = () => {
                        }}
                        transition={{duration : 3}}
                     key={topInstructor._id} className='mx-auto mb-3'>
-                        <div className="card w-86 bg-violet-200 shadow-xl">
+                        <div className="card rounded-tr-lg rounded-tl-none rounded-br-none rounded-bl-lg w-86 bg-violet-200 shadow-xl">
                     <figure><img className='h-72' src={topInstructor.photo} alt="Shoes" /></figure>
                     <div className="card-body">
                       <p>Instructor Name: {topInstructor.name}</p>

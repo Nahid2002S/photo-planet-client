@@ -18,7 +18,7 @@ const PopularClasses = () => {
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
                 {
                     popularClasses.map(popular => <div key={popular._id} className='mx-auto'>
-                        <div className="card w-86 bg-violet-200 shadow-xl">
+                        <div className="card rounded-tr-lg rounded-tl-none rounded-br-none rounded-bl-lg w-86 bg-violet-200 shadow-xl">
                     <figure><img className='h-72' src={popular.image} alt="Shoes" /></figure>
                     <div className="card-body">
                       <h2 className="card-title">Class Name: {popular.className}</h2>
